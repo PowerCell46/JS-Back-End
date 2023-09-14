@@ -1,0 +1,32 @@
+{
+  "cubes": [
+    {
+      "name": "Eevy",
+      "description": "Eevy is such a cute pokemon. 3>",
+      "imageUrl": "https://assets.pokemon.com/assets/cms2/img/pokedex/full/133.png",
+      "difficultyLevel": "1",
+      "cubeId": "655937569"
+    },
+    {
+      "name": "Gengar",
+      "description": "Gengar is fucking baddass...",
+      "imageUrl": "https://i.etsystatic.com/15564591/r/il/940177/4133198307/il_fullxfull.4133198307_1uq5.jpg",
+      "difficultyLevel": "5",
+      "cubeId": "136547652"
+    },
+    {
+      "name": "Palkia",
+      "description": "Palkia is the best legendary in my opinion",
+      "imageUrl": "https://img.pokemondb.net/artwork/large/palkia.jpg",
+      "difficultyLevel": "6",
+      "cubeId": "537964928"
+    },
+    {
+      "name": "Chimchar",
+      "description": "The best starter from Gen 4.",
+      "imageUrl": "https://i.pinimg.com/originals/9f/36/23/9f362382b5883d8bcbf52c9f02c8b808.png",
+      "difficultyLevel": "5",
+      "cubeId": "915264431"
+    }
+  ]
+}
