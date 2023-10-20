@@ -17,6 +17,11 @@ async function registerHandler(req, res) { // Checking if the user isn't already
     
     const {firstName, lastName, email, password, repeatPassword} = req.body;
     
+    if (firstName.length < 3 || lastName.length < 3 || email.length < 10 || password.length < 4) { // Validation of the input fields
+        return res.render("register", 
+        {err: "First Name and Last Name must be at least 3 characters, email at least 10 and the password at least 4!"});
+    }
+
     try {
 
         if (password !== repeatPassword) {
@@ -42,7 +47,6 @@ async function registerHandler(req, res) { // Checking if the user isn't already
         res.redirect('/');
     
     } catch(err) {
-
         res.render('register', {err: err.message});
     }
 }
