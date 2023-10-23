@@ -1,0 +1,49 @@
+{{#if err}}
+<!-- In case of error, you should display div with class "errorContainer" -->
+<!-- You can choose to display the first error or all of them (error message/s in your opinion) -->
+<div>
+    <div class="errorContainer">
+        <p>{{err}}</p>
+    </div>
+</div>
+{{/if}}
+
+
+<section id="detailsPage">
+    <div id="detailsInfo">
+        <h1>Name: {{electronic.name}}</h1>
+        <div class="info"><img src="{{electronic.imageUrl}}"></div>
+
+        <div class="info">
+            <h3>Type: {{electronic.type}}</h3>
+            <h3>Year of Production: {{electronic.production}}</h3>
+            <h3>Years of Exploitation: {{electronic.exploitation}}</h3>
+            <h3>Damages: {{electronic.damages}}</h3>
+            <h3>Description: {{electronic.description}}</h3>
+            <h2>Price: ${{electronic.price}}</h2>
+        </div>
+
+        {{#if isLoggedIn}}
+        <!--If there is user logged in-->
+        <div class="buttons">
+            
+            {{#if hasNotBought}}
+                <!--If user is not owner of the toy post-->
+                <a href="/buy/{{electronic._id}}" class="buy-btn">Buy</a>
+            {{/if}}
+
+            {{#if isOwner}}
+                <!--If user is owner-->
+                <a href="/edit/{{electronic._id}}" class="edit-btn">Edit</a>
+                <a href="/delete/{{electronic._id}}" class="delete-btn">Delete</a>
+            {{/if}}
+
+            {{#if hasBought}}
+                <!--If user is not the owner and is bought this toy-->
+                <p><span class="buy">Thank You For Your Purchase</span></p>
+            {{/if}}
+        </div>
+        {{/if}}
+
+    </div>
+</section>
