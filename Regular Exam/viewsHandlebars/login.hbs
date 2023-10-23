@@ -1,0 +1,21 @@
+{{#if err}}
+<!-- In case of error, you should display div with class "errorContainer" -->
+<!-- You can choose to display the first error or all of them (error message/s in your opinion) -->
+<div>
+    <div class="errorContainer">
+        <p>{{err}}</p>
+    </div>
+</div>
+{{/if}}
+
+<section id="loginPage">
+    <form id='loginForm'method="POST">
+        <label for="email">Email:</label>
+        <input type="text" id="email" name="email" placeholder="Email">
+
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" placeholder="Password">
+
+        <input type="submit" class="register" value="Login">
+    </form>
+</section>
