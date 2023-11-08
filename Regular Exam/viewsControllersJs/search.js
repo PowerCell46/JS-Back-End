@@ -2,7 +2,8 @@ const Electronics = require("../schemas/electronics");
 
 
 async function getSearchView(req, res) {
-    res.render("search", {notFirstTime: false});
+    const electronics = await Electronics.find().lean();
+    res.render("search", {electronics: electronics.length > 0 ? electronics : null});
 }
 
 
@@ -14,7 +15,7 @@ async function searchHandler(req, res) {
             { name: { $regex: new RegExp(name.toLowerCase(), 'i')},
             type: { $regex: new RegExp(type.toLowerCase(), "i")} }).lean();
         
-        res.render("search", {notFirstTime: true, electronics: electronics.length > 0 ? electronics : null});
+        res.render("search", {electronics: electronics.length > 0 ? electronics : null});
     
     } catch(err) {
         res.render("404", {err: err.message});
