@@ -1,0 +1,45 @@
+{{#if err}}
+    <div>
+        <div class="errorContainer">
+            <p>{{err}}</p>
+        </div>
+    </div>
+{{/if}}
+
+<main>
+    <div class="details-container">
+        <div class="details-container-image">
+            <img
+                src="{{course.image}}">
+        </div>
+        <div class="details-container-info">
+            <h2>Title: {{course.title}}</h2>
+            <h3>Type: {{course.type}}</h3>
+            <h3>Certificate: {{course.certificate}}</h3>
+            <h3>Price: €{{course.price}}</h3>
+            <h3>By: {{course.owner}}</h3>
+            <!--If there are sign up users-->
+            <h4>Signed By: cate.brown, nikolas.p</h4>
+            <!--If there are no sign up users-->
+            <h4>Nobody has signed in for this course yet</h4>
+        </div>
+        <div class="details-container-content">
+            <p>{{course.description}}</p>
+        </div>
+        <div class="btn-container">
+
+            {{#if isOwner}}
+                <a href="/course/edit/{{course._id}}">Edit</a>
+                <a href="/course/delete/{{course._id}}">Delete</a>
+            {{/if}}
+
+            {{#if hasNotSignedUp}}
+                <a href="/course/signUp/{{course._id}}">Sign up</a>
+            {{/if}}
+            
+            {{#if hasSignedUp}}
+                <p class="sign-up">You've already signed up for this course!</p>
+            {{/if}}
+        </div>
+    </div>
+</main>
