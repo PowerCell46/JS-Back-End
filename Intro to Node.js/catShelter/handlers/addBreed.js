@@ -1,5 +1,5 @@
+const {writeData} = require("../utils/writeData");
 const addBreed = require("../views/addBreed");
-const createBreedHandler = require("./createBreed");
 
 
 function addBreedGetHandler(res) {
@@ -7,6 +7,8 @@ function addBreedGetHandler(res) {
         "Content-type": "text/html"
     });
     res.write(addBreed);
+
+    res.end();
 }
 
 
@@ -16,11 +18,17 @@ function addBreedPostHandler(req, res) {
         body += chunk.toString();
     });
     req.on("end", () => {
-        createBreedHandler(body, res);
-    });
+        const formData = new URLSearchParams(body);
+    
+        const breed = formData.get("breed");
 
-    res.writeHead(302, {
-        "Location": "/"
+        writeData({name: breed}, "breed");
+        
+        res.writeHead(302, {
+            "Location": "/"
+        });
+
+        res.end();
     });
 }
 

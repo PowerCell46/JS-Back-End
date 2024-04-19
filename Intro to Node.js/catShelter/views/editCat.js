@@ -1,24 +1,32 @@
 const { upperBase, lowerBase } = require("./base");
 const { headerView } = require("./header");
 
-module.exports = `
+
+function editCatHtmlTemplate(catData, catId, breedsData) {
+    return `
     ${upperBase()}
     ${headerView()}
     <main>
-        <form action="#" method="" class="cat-form" enctype="multipart/form-data">
+        <form action="/edit/${catId}" method="post" class="cat-form">
             <h2>Edit Cat</h2>
             <label for="name">Name</label>
-            <input type="text" id="name" value="Pretty Cat">
+            <input type="text" name="name" id="name" value="${catData.name}">
             <label for="description">Description</label>
-            <textarea id="description">Dominant and aggressive to other cats. Will probably eat you in your sleep. Very cute tho.</textarea>
+            <textarea id="description" name="description">${catData.description}</textarea>
             <label for="image">Image</label>
-            <input type="file" id="image">
+            <input name="image" type="text" id="image" value="${catData.image}">
             <label for="group">Breed</label>
-            <select id="group">
-                <option value="Fluffy Cat">Fluffy Cat</option>
+            <select name="breed" id="group">
+                ${breedsData.map(breed => breed.name === catData.breed ? 
+                    `<option value="${breed.name}" selected>${breed.name}</option>` : 
+                    `<option value="${breed.name}">${breed.name}</option>`)}
             </select>
             <button>Edit Cat</button>
         </form>
     </main>
     ${lowerBase()}
 `;
+}
+
+
+module.exports = editCatHtmlTemplate;

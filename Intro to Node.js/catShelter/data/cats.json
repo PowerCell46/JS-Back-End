@@ -1,8 +1,14 @@
 [
     {
-        "name": "Ivan",
-        "description": "Ivan Chakala - Kotkata",
-        "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTWZqMXnxarkEQKpEbX6MRdskZqNMQvC00paesmVksW_A&s",
-        "breed": "Fluffy Cat"
+        "name": "Britain Cat",
+        "description": "Looks cool, I want one!",
+        "image": "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcSNuDoDFoaKbvg-RZbVHMIeWdOG4gS7deljOd-WzCRv1Lfaf7W7",
+        "breed": "Kotkata"
+    },
+    {
+        "name": "American Cat",
+        "description": "Nice one! Looks very cute!",
+        "image": "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcTtVS3J9To8XHhukFnLakXtbb282qjcFcvKJI_RJENoMGOAbwb5",
+        "breed": "Ivan Chakala"
     }
 ]

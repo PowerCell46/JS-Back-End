@@ -2,23 +2,28 @@ const { upperBase, lowerBase } = require("./base");
 const { headerView } = require("./header");
 
 
-module.exports = `
+function shelterCatHtmlTemplate(catData, catId) {
+    return `
     ${upperBase()}
     ${headerView()}
         <main>
-            <form action="#" method="" class="cat-form">
+            <form action="/shelter/${catId}" method="POST" class="cat-form">
                 <h2>Shelter the cat</h2>
-                <img src="https://cdn.pixabay.com/photo/2015/03/27/13/16/cat-694730_1280.jpg" alt="">
+                <img src="${catData.image}" alt="${catData.name}">
                 <label for="name">Name</label>
-                <input type="text" id="name" value="Pretty Kitty" disabled>
+                <input type="text" id="name" value="${catData.name}" disabled>
                 <label for="description">Description</label>
-                <textarea id="description" disabled>Dominant and aggressive to other cats. Will probably eat you in your sleep. Very cute tho.</textarea>
+                <textarea id="description" disabled>${catData.description}</textarea>
                 <label for="group">Breed</label>
                 <select id="group" disabled>
-                    <option value="Fluffy Cat">Fluffy Cat</option>
+                    <option value="${catData.breed}">${catData.breed}</option>
                 </select>
                 <button>SHELTER THE CAT</button>
             </form>
         </main>
     ${lowerBase()}
 `;
+}
+
+
+module.exports = shelterCatHtmlTemplate;
