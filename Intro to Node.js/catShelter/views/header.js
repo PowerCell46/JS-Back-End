@@ -13,7 +13,7 @@ function headerView() {
 }
 
 
-function homeHeaderView() {
+function homeHeaderView(searchQuery) {
     return `
     <header>
         <nav>
@@ -24,9 +24,9 @@ function homeHeaderView() {
             </ul>
         </nav>
         <h1>Cat Shelter</h1>
-        <form action="/search">
-            <input type="text">
-            <button type="button">Search</button>
+        <form action="/search" method="POST">
+            <input type="text" name="search" value="${searchQuery ? searchQuery : ""}">
+            <button type="submit">Search</button>
         </form>
     </header>
     `;

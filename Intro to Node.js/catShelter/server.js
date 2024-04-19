@@ -6,6 +6,7 @@ const stylesHandler = require("./handlers/styles");
 const { addCatGetHandler, addCatPostHandler } = require("./handlers/addCat");
 const { editCatGetHandler, editCatPutHandler } = require("./handlers/editCat");
 const { shelterCatGetHandler, shelterCatPostHandler } = require("./handlers/shelterCat");
+const { searchPostHandler } = require("./handlers/search");
 
 
 const server = http.createServer((req, res) => {
@@ -28,6 +29,10 @@ const server = http.createServer((req, res) => {
         
         case ("/content/styles/site.css"):
             stylesHandler(res);
+            break;
+            
+        case ("/search"):
+            searchPostHandler(req, res);
             break;
     } 
 
