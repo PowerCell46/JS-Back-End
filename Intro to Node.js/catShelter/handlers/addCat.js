@@ -1,4 +1,4 @@
-const {writeData} = require("../utils/writeData");
+const {writeData} = require("../utils/alterData");
 const createCatView = require("../views/addCat");
 const fs = require("fs/promises");
 

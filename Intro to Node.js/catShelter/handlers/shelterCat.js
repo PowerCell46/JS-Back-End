@@ -1,6 +1,6 @@
 const fs = require("fs/promises");
 const shelterCatHtmlTemplate = require("../views/catShelter");
-const { deleteData } = require("../utils/writeData");
+const { deleteData } = require("../utils/alterData");
 
 
 function shelterCatGetHandler(res, catId) {

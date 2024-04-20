@@ -1,4 +1,4 @@
-const {writeData} = require("../utils/writeData");
+const {writeData} = require("../utils/alterData");
 const addBreed = require("../views/addBreed");
 
 

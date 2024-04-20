@@ -1,6 +1,6 @@
 const fs = require("fs/promises");
 const editCatHtmlTemplate = require("../views/editCat");
-const { editData } = require("../utils/writeData");
+const { editData } = require("../utils/alterData");
 
 
 function editCatGetHandler(res, catId) {
