@@ -1,0 +1,16 @@
+[
+    {
+        "id": "5c39f1851ab3b24f5c03e182",
+        "name": "3x3 Cube",
+        "description": "Some random cube bro, IDK...",
+        "imageUrl": "https://mathsgear.co.uk/cdn/shop/products/one-of-black_grande.jpg?v=1479159720",
+        "difficultyLevel": 3
+    },
+    {
+        "id": "5f39r18h13b3b24f5c03e182",
+        "name": "5x5 Cube",
+        "description": "Some cube from the web..",
+        "imageUrl": "https://m.media-amazon.com/images/I/71PHXyFItFL.jpg",
+        "difficultyLevel": 5
+    }
+]
