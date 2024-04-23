@@ -62,3 +62,113 @@ fs.readFile("./output.txt", {encoding: "utf8"})
 });  
 
 
+// ???
+
+const listeners = {};
+
+
+function publish(eventName, ...args) {
+    if (!listeners[eventName]) {
+        return 
+    };
+
+    listeners[eventName].forEach(listener => listener(...args));
+}
+
+
+function subscribe(eventName, eventListener) {
+    if (!listeners[eventName]) {
+        listeners[eventName] = [];
+    }
+
+    listeners[eventName].push(eventListener);
+
+    return () => {
+        listeners[eventName] =  listeners[eventName].filter((list) => list !== eventListener);
+        console.log(`You have been unsubscribed from ${eventName}.`);
+    }
+}
+
+
+subscribe("ivan-added", () => console.log("Hello there"));
+
+subscribe("ivan-added", (age) => console.log(`I am ${age} years old.`));
+
+subscribe("ivan-added", (age, friend, activity) => console.log(`С авера ${friend} ще ${activity}!`));
+
+publish("ivan-added", 16, "Stilitoo", "ходиме у Флейма");
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* #region Main */
+
+router.route("/")
+.get((req, res) => {
+    // ... 
+})
+.post((req, res) => {
+    // ...
+})
+.put((req, res) => {
+    // ...
+})
+.delete((req, res) => {
+    // ...
+});
+/* #endregion */
+
+
+
+
+
+
+// const mongodb = require("mongodb");
+const { DB_CONNECTION_STR } = require("./constants");
+const Dog = require("./models/Dog");
+
+// const client = new mongodb.MongoClient(DB_CONNECTION_STR);
+
+// async function connectToDB() {
+//     client.connect();
+
+//     const db = client.db("test");
+
+//     const users = db.collection("users");
+
+//     const dbUsers = await users.find().toArray();
+
+//     console.log(dbUsers);
+// }
+
+
+// connectToDB();
+
+
+const mongoose = require("mongoose");
+
+async function connectToDB() {
+    await mongoose.connect(`${DB_CONNECTION_STR}jsbackend`, {
+        useNewUrlParser: true,
+        useUnifiedTopology: true
+    }); 
+
+    const dogs = await Dog.find();
+
+    dogs.forEach(dog => console.log(dog.description));
+
+    // console.log(dogs);
+}
+
+connectToDB();
