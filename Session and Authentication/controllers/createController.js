@@ -1,6 +1,6 @@
-const { writeData } = require("../handleData");
+// const { writeData } = require("../handleData");
+// const { generateId } = require("../utils");
 const Cube = require("../models/Cube");
-const { generateId } = require("../utils");
 const { validateCubeData } = require("../validators");
 
 
@@ -15,7 +15,7 @@ function postCreateView(req, res) {
     if (validateCubeData(name, description, imageUrl, Number(difficultyLevel))) {
         // writeData({id: generateId(), name, description, imageUrl, difficultyLevel: Number(difficultyLevel)}, res);
         
-        Cube.create({name, description, imageUrl, difficultyLevel: Number(difficultyLevel)})
+        Cube.create({name, description, imageUrl, difficultyLevel: Number(difficultyLevel), creatorId: res.locals.userId})
         .then(() => res.redirect("/"))
         .catch(err => console.error(err));
 

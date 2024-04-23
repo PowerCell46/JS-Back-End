@@ -54,5 +54,4 @@ function calculateSelectedOption(data) {
     };
 }
 
-
 module.exports = {generateId, filterHomeViewCubes, calculateSelectedOption};

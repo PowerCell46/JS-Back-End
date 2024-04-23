@@ -30,7 +30,12 @@ const cubeSchema = new Schema({
     accessories: [{
         type: Schema.Types.ObjectId,
         ref: "Accessory"
-    }]
+    }],
+    creatorId: {
+        required: true,
+        type: Schema.Types.ObjectId,
+        ref: "User",
+    }
 });
 
 

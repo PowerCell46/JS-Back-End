@@ -1,9 +1,12 @@
 const APP_PORT = 5000;
+
 const DB_LOCATION = "./database.json";
 
 const DB_CONNECTION_STR = "mongodb+srv://PowerCell46:PowerCell46@cluster0.xhq46jq.mongodb.net";
 
 const DB_COURSE = "jsbackend";
+
+const JWT_SECRET = "PowerCell46";
 
 
 const cubeFieldRequirements = {
@@ -20,4 +23,4 @@ const accessoryFieldRequirements = {
 }
 
 
-module.exports = {APP_PORT, DB_LOCATION, cubeFieldRequirements, DB_CONNECTION_STR, accessoryFieldRequirements, DB_COURSE};
+module.exports = {APP_PORT, DB_LOCATION, cubeFieldRequirements, DB_CONNECTION_STR, accessoryFieldRequirements, DB_COURSE, JWT_SECRET};

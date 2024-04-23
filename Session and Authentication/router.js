@@ -1,3 +1,4 @@
+const { authForb, authReq, isCreator } = require("./authMiddleware");
 const getAboutView = require("./controllers/aboutController");
 const { getAttachAccessoryView, postAttachAccessoryView } = require("./controllers/attachAccessory");
 const { getCreateAccessoryView, postCreateAccessoryView } = require("./controllers/createAccessory");
@@ -7,6 +8,8 @@ const { getDetailsView } = require("./controllers/detailsController");
 const { getEditView, postEditView } = require("./controllers/editController");
 const { getErrorView } = require("./controllers/errorController");
 const { getHomeView, postHomeView } = require("./controllers/homeController");
+const { getLoginView, postLoginView } = require("./controllers/loginController");
+const getLogout = require("./controllers/logoutController");
 const { getRegisterView, postRegisterView } = require("./controllers/registerController");
 
 const router = require("express").Router();
@@ -18,44 +21,50 @@ router.route("/")
 
 
 router.route("/register")
-.get(getRegisterView)
-.post(postRegisterView);
+.get(authForb, getRegisterView)
+.post(authForb, postRegisterView);
+
+
+router.route("/login")
+.get(authForb, getLoginView)
+.post(authForb, postLoginView);
+
+
+router.get("/logout", authReq, getLogout);
 
 
 router.get("/about", getAboutView);
 
 
 router.route("/create/accessory")
-.get(getCreateAccessoryView)
-.post(postCreateAccessoryView);
+.get(authReq, getCreateAccessoryView)
+.post(authReq, postCreateAccessoryView);
 
 
 router.route("/attach/accessory/:id")
-.get(getAttachAccessoryView)
-.post(postAttachAccessoryView);
+.get(authReq, isCreator, getAttachAccessoryView)
+.post(authReq, isCreator, postAttachAccessoryView);
 
 
 router.route("/create")
-.get(getCreateView)
-.post(postCreateView);
+.get(authReq, getCreateView)
+.post(authReq, postCreateView);
 
 
-router.route("/details/:id")
-.get(getDetailsView);
+router.get("/details/:id", getDetailsView);
 
 
 router.route("/edit/:id")
-.get(getEditView)
-.post(postEditView);
+.get(authReq, isCreator, getEditView)
+.post(authReq, isCreator, postEditView);
 
 
 router.route("/delete/:id")
-.get(getDeleteView)
-.post(postDeleteView);
+.get(authReq, isCreator, getDeleteView)
+.post(authReq, isCreator, postDeleteView);
 
 
-router.route("*")
-.get(getErrorView);
+router.route("*").get(getErrorView);
 
 
 module.exports = router;

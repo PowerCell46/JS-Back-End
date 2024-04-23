@@ -2,6 +2,7 @@ const { accessoryFieldRequirements } = require("../constants");
 const Accessory = require("../models/Accessory");
 const { validateImageUrl } = require("../validators");
 
+
 function getCreateAccessoryView(req, res) {
     res.render("createAccessory");
 }

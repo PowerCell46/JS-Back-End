@@ -5,6 +5,7 @@ const handlebars = require("express-handlebars");
 const app = express();
 const mongoose = require("mongoose");
 const cookieParser = require("cookie-parser");
+const { isAuthenticated } = require("./authMiddleware");
 
 
 app.use(express.urlencoded({extended: false})); // parses the sent data
@@ -19,7 +20,11 @@ app.engine("hbs", handlebars.engine({extname: "hbs"}));
 app.set("view engine", "hbs");
 
 
-app.use(cookieParser());
+// extracts the cookie data from the request headers, parses it, and then makes it available in the req.cookies
+app.use(cookieParser()); 
+
+
+app.use(isAuthenticated); 
 
 
 app.use(router);
