@@ -10,17 +10,23 @@ const JWT_SECRET = "PowerCell46";
 
 
 const cubeFieldRequirements = {
-    nameMinLen: 3,
+    nameMinLen: 5,
     descMinLen: 10,
     descMaxLen: 50,
     imageUrlStart: ['http', 'https'],
     diffMinVal: 1,
     diffMaxVal: 6   
-}
+};
 
 const accessoryFieldRequirements = {
+    nameMinLen: 5,
     descMaxLen: 20
-}
+};
+
+const userFieldRequirements = {
+    userMinLen: 5,
+    passMinLen: 8
+};
 
 
-module.exports = {APP_PORT, DB_LOCATION, cubeFieldRequirements, DB_CONNECTION_STR, accessoryFieldRequirements, DB_COURSE, JWT_SECRET};
+module.exports = {APP_PORT, DB_LOCATION, cubeFieldRequirements, DB_CONNECTION_STR, accessoryFieldRequirements, DB_COURSE, JWT_SECRET, userFieldRequirements};

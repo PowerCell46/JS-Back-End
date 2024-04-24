@@ -1,5 +1,5 @@
-const Accessory = require("../models/Accessory");
-const Cube = require("../models/Cube");
+const Accessory = require("../../models/Accessory");
+const Cube = require("../../models/Cube");
 
 
 function getAttachAccessoryView(req, res) {
@@ -12,9 +12,9 @@ function getAttachAccessoryView(req, res) {
                 
                 res.render("attachAccessory", {cube: cubeData, accessories: accessoryData});
             })
-            .catch(err => console.error(err));
+            .catch(err => console.error(err)); // notify the user ???
         })
-        .catch(err => console.error(err));
+        .catch(err => console.error(err)); // notify the user ???
 }
 
 
@@ -29,9 +29,9 @@ function postAttachAccessoryView(req, res) {
         }
         cubeData.accessories.push(accessory);
         return cubeData.save();
-        })
-        .then(() => res.redirect(`/details/${req.params.id}`))
-        .catch(err => console.error(err));
+    })
+    .then(() => res.redirect(`/details/${req.params.id}`))
+    .catch(err => console.error(err)); // notify the user ???
 }
 
 

@@ -1,6 +1,5 @@
 const {model, Schema} = require("mongoose");
 const { cubeFieldRequirements } = require("../constants");
-const { validateImageUrl } = require("../validators");
 
 
 const cubeSchema = new Schema({
@@ -15,11 +14,7 @@ const cubeSchema = new Schema({
     },
     imageUrl: {
         required: true,
-        type: String,
-        validate: {
-            validator: validateImageUrl,
-            message: "The image URL must start with 'http' or 'https'!"
-        }
+        type: String
     },
     difficultyLevel: {
         required: true,

@@ -1,5 +1,5 @@
-const Cube = require("../models/Cube");
-const { calculateSelectedOption } = require("../utils");
+const Cube = require("../../models/Cube");
+const { calculateSelectedOption } = require("../../utils");
 
 
 function getDeleteView(req, res) {
@@ -13,7 +13,7 @@ function getDeleteView(req, res) {
 
         res.render("delete", {cube: data, selectedObj});
     })
-    .catch(err => console.error(err));
+    .catch(err => console.error(err)); // notify the user ???
 }
 
 
@@ -22,7 +22,7 @@ function postDeleteView(req, res) {
 
     Cube.findByIdAndDelete(cubeId)
     .then(() => res.redirect("/"))
-    .catch(err => console.error(err));
+    .catch(err => console.error(err)); // notify the user ???
 }
 
 

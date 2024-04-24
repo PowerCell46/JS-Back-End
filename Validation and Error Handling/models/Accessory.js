@@ -1,6 +1,5 @@
 const {model, Schema} = require("mongoose");
 const { accessoryFieldRequirements } = require("../constants");
-const { validateImageUrl } = require("../validators");
 
 
 const accessorySchema = new Schema({
@@ -10,11 +9,7 @@ const accessorySchema = new Schema({
     },
     imageUrl: {
         required: true,
-        type: String,
-        validate: {
-            validator: validateImageUrl,
-            message: "The image URL must start with 'http' or 'https'!"
-        }
+        type: String
     },
     description: {
         required: true,

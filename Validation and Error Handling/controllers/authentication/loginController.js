@@ -1,5 +1,6 @@
-const { validatePassword, attachToken } = require("../authUtils");
-const User = require("../models/User");
+const { validatePassword, attachToken } = require("../../authUtils");
+const User = require("../../models/User");
+const { errorMessageHandler } = require("../../utils");
 
 
 function getLoginView(req, res) {
@@ -23,13 +24,16 @@ function postLoginView(req, res) {
                     res.redirect("/");
 
                 } else {
-                    console.log("Invalid Password!");
+                    return errorMessageHandler(res, "login", "Invalid Username or Password!");
                 }
             })
-            .catch(err => console.error(err));
+            .catch(err => console.error(err)); // notify the user ???
+
+        } else {
+            return errorMessageHandler(res, "login", "Invalid Username or Password!");
         }
     })
-    .catch(err => console.error(err));
+    .catch(err => console.error(err)); // notify the user ???
 }
 
 

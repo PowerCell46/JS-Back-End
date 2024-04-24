@@ -1,16 +1,16 @@
 const { authForb, authReq, isCreator } = require("./authMiddleware");
-const getAboutView = require("./controllers/aboutController");
-const { getAttachAccessoryView, postAttachAccessoryView } = require("./controllers/attachAccessory");
-const { getCreateAccessoryView, postCreateAccessoryView } = require("./controllers/createAccessory");
-const { getCreateView, postCreateView } = require("./controllers/createController");
-const { getDeleteView, postDeleteView } = require("./controllers/deleteController");
-const { getDetailsView } = require("./controllers/detailsController");
-const { getEditView, postEditView } = require("./controllers/editController");
-const { getErrorView } = require("./controllers/errorController");
-const { getHomeView, postHomeView } = require("./controllers/homeController");
-const { getLoginView, postLoginView } = require("./controllers/loginController");
-const getLogout = require("./controllers/logoutController");
-const { getRegisterView, postRegisterView } = require("./controllers/registerController");
+const getAboutView = require("./controllers/common/aboutController");
+const { getAttachAccessoryView, postAttachAccessoryView } = require("./controllers/accessories/attachAccessory");
+const { getCreateAccessoryView, postCreateAccessoryView } = require("./controllers/accessories/createAccessory");
+const { getCreateView, postCreateView } = require("./controllers/cubes/createController");
+const { getDeleteView, postDeleteView } = require("./controllers/cubes/deleteController");
+const { getDetailsView } = require("./controllers/cubes/detailsController");
+const { getEditView, postEditView } = require("./controllers/cubes/editController");
+const { getErrorView } = require("./controllers/common/errorController");
+const { getHomeView, postHomeView } = require("./controllers/common/homeController");
+const { getLoginView, postLoginView } = require("./controllers/authentication/loginController");
+const getLogout = require("./controllers/authentication/logoutController");
+const { getRegisterView, postRegisterView } = require("./controllers/authentication/registerController");
 
 const router = require("express").Router();
 

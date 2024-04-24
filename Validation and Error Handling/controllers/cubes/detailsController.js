@@ -1,6 +1,6 @@
-// const { readSpecificData } = require("../handleData");
-const Accessory = require("../models/Accessory");
-const Cube = require("../models/Cube");
+// const { readSpecificData } = require("../../handleData");
+const Accessory = require("../../models/Accessory");
+const Cube = require("../../models/Cube");
 
 
 function getDetailsView(req, res) {
@@ -15,9 +15,9 @@ function getDetailsView(req, res) {
 
             res.render("details", {cube: data, accessories: accessoriesData, isCreator});
         })
-        .catch(err => console.error(err));
+        .catch(err => console.error(err)); // notify the user ???
     })
-    .catch(err => console.error(err));
+    .catch(err => console.error(err)); // notify the user ???
 }
 
 

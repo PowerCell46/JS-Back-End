@@ -1,5 +1,6 @@
 const Cube = require("./models/Cube");
 
+
 function generateId(length = 24) {
     const characters = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
     let id = '';
@@ -54,4 +55,8 @@ function calculateSelectedOption(data) {
     };
 }
 
-module.exports = {generateId, filterHomeViewCubes, calculateSelectedOption};
+
+const errorMessageHandler = (res, view, errMessage) => res.render(view, {error: errMessage});
+
+
+module.exports = {generateId, filterHomeViewCubes, calculateSelectedOption, errorMessageHandler};

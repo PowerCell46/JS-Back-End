@@ -1,5 +1,6 @@
 const { validateToken } = require("./authUtils");
 const Cube = require("./models/Cube");
+const { errorMessageHandler } = require("./utils");
 
 
 function isAuthenticated(req, res, next) {
@@ -22,7 +23,7 @@ function isCreator(req, res, next) {
     Cube.findById(req.params.id)
     .then(cubeData => {
         if (cubeData.creatorId.toString() !== res.locals.userId) {
-            return res.redirect("/404");
+            return errorMessageHandler(res, "404", "You cannot access this page!");
         }
     })
     .catch(err => console.error(err));
@@ -33,7 +34,7 @@ function isCreator(req, res, next) {
 
 function authReq(req, res, next) {
     if (!res.locals.isAuthenticated) {
-        return res.redirect("/register"); // Stop the completion of the view
+        return errorMessageHandler(res, "register", "Authentication Required!");
     }
 
     next();
@@ -42,7 +43,7 @@ function authReq(req, res, next) {
 
 function authForb(req, res, next) {
     if (res.locals.isAuthenticated) {
-        return res.redirect("/"); // Stop the completion of the view
+        return errorMessageHandler(res, "index", "You are already authenticated!");
     }
 
     next();

@@ -1,6 +1,6 @@
-// const { readAllData, readFilteredData } = require("../handleData");
-const Cube = require("../models/Cube");
-const { filterHomeViewCubes } = require("../utils");
+// const { readAllData, readFilteredData } = require("../../handleData");
+const Cube = require("../../models/Cube");
+const { filterHomeViewCubes } = require("../../utils");
 
 
 function getHomeView(req, res) {
