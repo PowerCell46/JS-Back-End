@@ -1,7 +1,7 @@
-const { hashPassword, attachToken } = require("../../authUtils");
+const { hashPassword, attachToken } = require("../../utils/authUtils");
 const User = require("../../models/User");
-const { errorMessageHandler } = require("../../utils");
-const { validateUserData } = require("../../validators");
+const { errorMessageHandler } = require("../../utils/utils");
+const { validateUserData } = require("../../utils/validators");
 
 
 function getRegisterView(req, res) {

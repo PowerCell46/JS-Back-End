@@ -1,6 +1,6 @@
-const { validateToken } = require("./authUtils");
-const Cube = require("./models/Cube");
-const { errorMessageHandler } = require("./utils");
+const { validateToken } = require("../utils/authUtils");
+const Cube = require("../models/Cube");
+const { errorMessageHandler } = require("../utils/utils");
 
 
 function isAuthenticated(req, res, next) {

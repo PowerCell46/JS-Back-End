@@ -1,4 +1,4 @@
-const { cubeFieldRequirements, userFieldRequirements } = require("./constants");
+const { cubeFieldRequirements, userFieldRequirements } = require("../constants");
 
 
 function validateCubeOrAccessoryData(dataType, name, description, imageUrl, difficultyLevel) {

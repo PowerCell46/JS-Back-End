@@ -1,4 +1,4 @@
-const Cube = require("./models/Cube");
+const Cube = require("../models/Cube");
 
 
 function generateId(length = 24) {

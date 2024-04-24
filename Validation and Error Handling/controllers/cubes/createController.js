@@ -1,8 +1,8 @@
 // const { writeData } = require("../../handleData");
 // const { generateId } = require("../../utils");
 const Cube = require("../../models/Cube");
-const { errorMessageHandler } = require("../../utils");
-const { validateCubeOrAccessoryData } = require("../../validators");
+const { errorMessageHandler } = require("../../utils/utils");
+const { validateCubeOrAccessoryData } = require("../../utils/validators");
 
 
 function getCreateView(req, res) {

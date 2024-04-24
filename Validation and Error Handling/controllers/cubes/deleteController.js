@@ -1,5 +1,5 @@
 const Cube = require("../../models/Cube");
-const { calculateSelectedOption } = require("../../utils");
+const { calculateSelectedOption } = require("../../utils/utils");
 
 
 function getDeleteView(req, res) {

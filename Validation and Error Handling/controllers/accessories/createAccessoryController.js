@@ -1,6 +1,6 @@
 const Accessory = require("../../models/Accessory");
-const { errorMessageHandler } = require("../../utils");
-const { validateCubeOrAccessoryData } = require("../../validators");
+const { errorMessageHandler } = require("../../utils/utils");
+const { validateCubeOrAccessoryData } = require("../../utils/validators");
 
 
 function getCreateAccessoryView(req, res) {

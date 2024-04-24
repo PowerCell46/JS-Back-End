@@ -1,7 +1,7 @@
-const { authForb, authReq, isCreator } = require("./authMiddleware");
+const { authForb, authReq, isCreator } = require("./middlewares/authMiddleware");
 const getAboutView = require("./controllers/common/aboutController");
-const { getAttachAccessoryView, postAttachAccessoryView } = require("./controllers/accessories/attachAccessory");
-const { getCreateAccessoryView, postCreateAccessoryView } = require("./controllers/accessories/createAccessory");
+const { getAttachAccessoryView, postAttachAccessoryView } = require("./controllers/accessories/attachAccessoryController");
+const { getCreateAccessoryView, postCreateAccessoryView } = require("./controllers/accessories/createAccessoryController");
 const { getCreateView, postCreateView } = require("./controllers/cubes/createController");
 const { getDeleteView, postDeleteView } = require("./controllers/cubes/deleteController");
 const { getDetailsView } = require("./controllers/cubes/detailsController");

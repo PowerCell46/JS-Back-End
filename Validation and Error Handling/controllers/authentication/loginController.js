@@ -1,6 +1,6 @@
-const { validatePassword, attachToken } = require("../../authUtils");
+const { validatePassword, attachToken } = require("../../utils/authUtils");
 const User = require("../../models/User");
-const { errorMessageHandler } = require("../../utils");
+const { errorMessageHandler } = require("../../utils/utils");
 
 
 function getLoginView(req, res) {

@@ -1,6 +1,6 @@
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
-const { JWT_SECRET } = require("./constants");
+const { JWT_SECRET } = require("../constants");
 
 
 function hashPassword(password) {

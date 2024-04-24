@@ -1,4 +1,4 @@
-const { clearCookieToken } = require("../../authUtils");
+const { clearCookieToken } = require("../../utils/authUtils");
 
 
 function getLogout(req, res) {

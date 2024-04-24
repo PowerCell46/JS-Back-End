@@ -1,6 +1,6 @@
 const Cube = require("../../models/Cube");
-const { calculateSelectedOption, errorMessageHandler } = require("../../utils");
-const { validateCubeOrAccessoryData } = require("../../validators");
+const { calculateSelectedOption, errorMessageHandler } = require("../../utils/utils");
+const { validateCubeOrAccessoryData } = require("../../utils/validators");
 
 
 function getEditView(req, res) {

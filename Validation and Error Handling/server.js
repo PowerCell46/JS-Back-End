@@ -5,7 +5,7 @@ const handlebars = require("express-handlebars");
 const app = express();
 const mongoose = require("mongoose");
 const cookieParser = require("cookie-parser");
-const { isAuthenticated } = require("./authMiddleware");
+const { isAuthenticated } = require("./middlewares/authMiddleware");
 
 
 app.use(express.urlencoded({extended: false})); // parses the sent data
