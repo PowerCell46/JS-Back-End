@@ -7,14 +7,3 @@ import { loginTemplate } from "../views/loginView.js";
 export function loginView() {
     render(baseAuthTemplate(loginTemplate), main);
 }
-
-
-export function loginHandler(event) {
-    event.preventDefault();
-
-    const data = new FormData(event.currentTarget);
-
-    const {email, password} = Object.fromEntries(data);
-
-    console.log(email, password);
-}

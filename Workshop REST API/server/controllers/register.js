@@ -1,12 +1,31 @@
+const User = require("../models/User");
+const { hashPassword, createToken } = require("../utils/authUtils");
+
+
 function register(req, res) {
+    let {email, password} = req.body;
+    email = email.trim();
 
-    const {email, password} = req.body;
+    hashPassword(password)
+    .then(hashedPass => {
+        User.create({email, password: hashedPass})
+        .then(user => {
+            const token = createToken(user);
 
-    console.log(email, password);
+            console.log(`User: ${email} successfully registered!`);
+            
+            res.status(200).json({token, email, userId: user._id});
+        })
+        .catch(err => {
+            console.error(err);
+            res.status(500).send("An Error occurred!");
+        });
 
-    console.log(req.body);
-
-    res.send("OK BRO!");
+    })
+    .catch(err => {
+        console.error(err);
+        res.status(500).send("An Error occurred!");
+    });
 }
 
 
