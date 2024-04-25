@@ -1,7 +1,8 @@
 import { createHandler } from "../controllers/createController.js";
 import {html} from "../node_modules/lit-html/lit-html.js";
 
-export const homeLoggedOff = html`
+
+export const homeLoggedOff = (products) => html`
 <main>
 
 <div id="container">
@@ -25,42 +26,7 @@ export const homeLoggedOff = html`
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td>
-                                        <img
-                                            src="https://www.lidl-shop.nl/media/fcf868f9526b38d0b0a43cc2ace72b80.jpeg">
-                                    </td>
-                                    <td>
-                                        <p>Office chair</p>
-                                    </td>
-                                    <td>
-                                        <p>160</p>
-                                    </td>
-                                    <td>
-                                        <p>0.5</p>
-                                    </td>
-                                    <td>
-                                        <input type="checkbox" disabled/>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <img
-                                            src="https://res.cloudinary.com/maisonsdumonde/image/upload/q_auto,f_auto/w_200/img/grey-3-seater-sofa-bed-200-13-0-175521_9.jpg">
-                                    </td>
-                                    <td>
-                                        <p>Sofa</p>
-                                    </td>
-                                    <td>
-                                        <p>259</p>
-                                    </td>
-                                    <td>
-                                        <p>1.2</p>
-                                    </td>
-                                    <td>
-                                        <input type="checkbox" disabled/>
-                                    </td>
-                                </tr>
+                            ${products.map(product => productTrTemplate(product, false))}
                             </tbody>
                         </table>
                     </div>
@@ -75,7 +41,8 @@ export const homeLoggedOff = html`
 </main>
 `;
 
-export const homeLoggedIn = html`
+
+export const homeLoggedIn = (products) => html`
 <main>
 
 <div id="container">
@@ -108,42 +75,7 @@ export const homeLoggedIn = html`
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td>
-                                        <img
-                                            src="https://www.lidl-shop.nl/media/fcf868f9526b38d0b0a43cc2ace72b80.jpeg">
-                                    </td>
-                                    <td>
-                                        <p>Office chair</p>
-                                    </td>
-                                    <td>
-                                        <p>160</p>
-                                    </td>
-                                    <td>
-                                        <p>0.5</p>
-                                    </td>
-                                    <td>
-                                        <input type="checkbox"/>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <img
-                                            src="https://res.cloudinary.com/maisonsdumonde/image/upload/q_auto,f_auto/w_200/img/grey-3-seater-sofa-bed-200-13-0-175521_9.jpg">
-                                    </td>
-                                    <td>
-                                        <p>Sofa</p>
-                                    </td>
-                                    <td>
-                                        <p>259</p>
-                                    </td>
-                                    <td>
-                                        <p>1.2</p>
-                                    </td>
-                                    <td>
-                                        <input type="checkbox"/>
-                                    </td>
-                                </tr>
+                                ${products.map(product => productTrTemplate(product, true))}
                             </tbody>
                         </table>
                         <button>Buy</button>
@@ -161,4 +93,28 @@ export const homeLoggedIn = html`
         <!-- <textarea rows="4" cols="50" disabled></textarea> -->
     </div>
 </div>
-</main>`
+</main>`;
+
+
+const productTrTemplate = (product, loggedIn) => html`
+<tr>
+    <td>
+        <img
+            src="${product.img}">
+    </td>
+    <td>
+        <p>${product.name}</p>
+    </td>
+    <td>
+        <p>${product.price}</p>
+    </td>
+    <td>
+        <p>${product.factor}</p>
+    </td>
+    <td>
+        ${loggedIn ? html`
+        <input type="checkbox"/>` : html`
+        <input type="checkbox" disabled/>`
+    }
+    </td>
+</tr>`

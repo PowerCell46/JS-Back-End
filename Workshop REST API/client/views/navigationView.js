@@ -3,10 +3,9 @@ import { logoutView } from "../controllers/logoutController.js";
 
 
 export const navigationTemplate = (isAuthenticated) => html`
-    <a href="home.html">Catalog</a>
+    <a href="/">Catalog</a>
     ${isAuthenticated ? html`
         <div id="user">
-            <a href="/create">Create Product</a>
             <a id="logoutBtn" @click=${logoutView} href="javascript:void(0)">Logout</a>
         </div>
     ` : html`

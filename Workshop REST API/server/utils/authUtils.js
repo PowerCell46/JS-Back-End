@@ -17,5 +17,9 @@ function validatePassword(password, hashedPass) {
     return bcrypt.compare(password, hashedPass);
 }
 
+function decodeToken(token) {
+    return jwt.decode(token);
+}
 
-module.exports = {hashPassword, createToken, validatePassword};
+
+module.exports = {hashPassword, createToken, validatePassword, decodeToken};
