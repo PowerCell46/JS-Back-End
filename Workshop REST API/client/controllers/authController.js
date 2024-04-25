@@ -17,6 +17,7 @@ export function authHandler(event, view) {
     } else {
         var {email, password } = Object.fromEntries(data);
     }
+    email = email.trim();
 
     fetch(`${BASE_SERVER_URL}/${view}`, {method: "POST",
     headers: {"Content-Type": "application/json"},
