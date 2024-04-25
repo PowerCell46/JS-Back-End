@@ -1,4 +1,5 @@
 import { createHandler } from "../controllers/createController.js";
+import { finishOrderHandler, getOrdersHandler } from "../controllers/orderController.js";
 import {html} from "../node_modules/lit-html/lit-html.js";
 
 
@@ -78,12 +79,12 @@ export const homeLoggedIn = (products) => html`
                                 ${products.map(product => productTrTemplate(product, true))}
                             </tbody>
                         </table>
-                        <button>Buy</button>
+                        <button @click=${finishOrderHandler}>Buy</button>
                         <hr>
                         <div class="orders">
-                            <p>Bought furniture: <span>Office chair, Sofa</span></p>
-                            <p>Total price: <span>419 $</span></p>
-                            <button>All orders</button>
+                            <p id="bought-furniture-p" style="display: none">Bought furniture: <span>Office chair, Sofa</span></p>
+                            <p id="total-price-p" style="display: none">Total price: <span>419 $</span></p>
+                            <button @click=${getOrdersHandler}>All orders</button>
                         </div>
                     </div>
                 </div>
@@ -98,6 +99,9 @@ export const homeLoggedIn = (products) => html`
 
 const productTrTemplate = (product, loggedIn) => html`
 <tr>
+    <td style="display: none;">
+        <p id="productId">${product._id}</p>
+    </td>
     <td>
         <img
             src="${product.img}">

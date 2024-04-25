@@ -5,7 +5,6 @@ const { decodeToken } = require("../utils/authUtils");
 function getProducts(req, res) {
     Product.find()
     .then(products => {
-        console.log(products);
         res.status(200).json(products);
     })
     .catch(err => console.error(err));
@@ -35,13 +34,3 @@ function postProducts(req, res) {
 }
 
 module.exports = {getProducts, postProducts};
-
-[
-    {
-        "_id": "662a9c1be5608d1700f8bba7",
-        "name": "Mid Century Chair",
-        "factor": "0.2",
-        "price": 50,
-        "__v": 0
-    }
-]

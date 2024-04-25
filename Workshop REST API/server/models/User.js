@@ -13,6 +13,13 @@ const userSchema = new Schema({
     password: {
         type: String,
         required: true
+    },
+    orders: {
+        type: [{
+            type: Schema.Types.ObjectId,
+            ref: "Product"
+        }],
+        default: []
     }
 });
 

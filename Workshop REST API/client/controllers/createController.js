@@ -24,7 +24,6 @@ export function createHandler(event) {
     body: JSON.stringify({name, price, factor, img})})
     .then(response => {
         if (response.status === 200) {
-            console.log("SUCCESS");
             page.redirect("/");
         }
     })
