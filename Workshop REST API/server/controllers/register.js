@@ -1,10 +1,18 @@
 const User = require("../models/User");
 const { hashPassword, createToken } = require("../utils/authUtils");
+const { errorResponse } = require("../utils/errorUtils");
+const { validateUserData } = require("../utils/validators");
 
 
 function register(req, res) {
     let {email, password} = req.body;
     email = email.trim();
+
+    const validUserData = validateUserData(email, password);
+
+    if (validUserData !== true) {
+        return errorResponse(res, 400, validUserData);
+    }
 
     hashPassword(password)
     .then(hashedPass => {
@@ -18,13 +26,15 @@ function register(req, res) {
         })
         .catch(err => {
             console.error(err);
-            res.status(500).send("An Error occurred!");
+
+            errorResponse(res, 500, "Internal Server Error!");
         });
 
     })
     .catch(err => {
         console.error(err);
-        res.status(500).send("An Error occurred!");
+
+        errorResponse(res, 500, "Internal Server Error!");
     });
 }
 

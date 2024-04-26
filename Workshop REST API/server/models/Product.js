@@ -1,26 +1,33 @@
 const {model, Schema} = require("mongoose");
+const { productDataReq } = require("../utils/constants");
 
 
 const productSchema = new Schema({
     name: {
         type: String,
-        required: true
+        required: true,
+        minlength: productDataReq.nameMinLen,
+        maxlength: productDataReq.nameMaxLen
     },
     factor: {
         type: Number,
-        required: true
+        required: true,
+        min: productDataReq.factorMinVal,
+        max: productDataReq.factorMaxVal
     },
     price: {
         type: Number,
-        required: true
+        required: true,
+        min: productDataReq.priceMinVal,
+        max: productDataReq.priceMaxVal
     },
     img: {
         type: String,
         required: true
     },
     creatorId: {
-        required: true,
         type: Schema.Types.ObjectId,
+        required: true,
         ref: "User"
     }
 });

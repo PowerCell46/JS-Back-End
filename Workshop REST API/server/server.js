@@ -18,5 +18,4 @@ app.use(router);
 mongoose.connect(`${DB_CONNECTION_STR}/${WORKSHOP_NAME}`);
 
 
-
 app.listen(SERVER_PORT, () => console.log(`Server is live on port ${SERVER_PORT}...`));

@@ -23,7 +23,7 @@ export function finishOrderHandler(event) {
     body: JSON.stringify({orderProductsIds})})
     .then(response => {
         if (response.status === 200) {
-            console.log("Success!");
+            alert("Successful Order!");
             page.redirect("/");
             
         } else {

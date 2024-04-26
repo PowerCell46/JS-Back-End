@@ -1,5 +1,5 @@
 const {model, Schema} = require("mongoose");
-const { userSchemaVal } = require("../utils/constants");
+const { userDataReq } = require("../utils/constants");
 
 
 const userSchema = new Schema({
@@ -7,8 +7,8 @@ const userSchema = new Schema({
         type: String,
         required: true,
         unique: true,
-        minlength: userSchemaVal.usernameMinLen,
-        maxlength: userSchemaVal.usernameMaxLen
+        minlength: userDataReq.usernameMinLen,
+        maxlength: userDataReq.usernameMaxLen
     },
     password: {
         type: String,

@@ -1,6 +1,7 @@
 const Product = require("../models/Product");
 const User = require("../models/User");
 const { decodeToken } = require("../utils/authUtils");
+const { errorResponse } = require("../utils/errorUtils");
 
 
 function postOrder(req, res) {
@@ -8,25 +9,24 @@ function postOrder(req, res) {
     const decodedToken = decodeToken(token);
 
     if (decodedToken === null) {
-        return res.status(403).send("Unauthorized!");
+        return errorResponse(res, 403, "Unauthorized!");
     }
 
     const {orderProductsIds} = req.body;
-
-    console.log(orderProductsIds);
 
     User.findByIdAndUpdate(decodedToken.userId,
         { $push: { orders: { $each: orderProductsIds } } },
         { new: true }
       )
       .then(user => {
-        console.log(user);
+        console.log(`Updated User orders: ${user.orders}`);
 
         res.status(200).send("Successful order!");
       })
       .catch(error => {
         console.error(error);
-        res.status(500).send("Internal Error!");
+
+        errorResponse(res, 500, "Internal Server Error!");
       });
 }
 
@@ -36,7 +36,7 @@ function getOrders(req, res) {
     const decodedToken = decodeToken(token);
 
     if (decodedToken === null) {
-        return res.status(403).send("Unauthorized!");
+        return errorResponse(res, 403, "Unauthorized!");
     }
 
     User.findById(decodedToken.userId)
@@ -44,29 +44,29 @@ function getOrders(req, res) {
         let totalPrice = 0;
         let productNames = [];
 
-        // Map each productId to a Promise that resolves to the corresponding product
-        const productPromises = user.orders.map(productId => Product.findById(productId.toString()));
+        const productRequests = user.orders.map(productId => 
+            Product.findById(productId.toString())
+        );
 
-        // Wait for all the product retrieval promises to resolve
-        Promise.all(productPromises)
+        Promise.all(productRequests)
             .then(products => {
-                // Calculate total price and collect product names
                 products.forEach(product => {
                     totalPrice += product.price;
                     productNames.push(product.name);
                 });
 
-                // Send data as JSON
                 res.json({ totalPrice, productNames: productNames.join(", ") });
             })
             .catch(error => {
                 console.error(error);
-                res.status(500).json({ error: 'Failed to retrieve products' });
+                
+                return errorResponse(res, 500, "Internal Server Error!");
             });
     })
     .catch(error => {
         console.error(error);
-        res.status(500).json({ error: 'Failed to retrieve user' });
+
+        errorResponse(res, 500, "Internal Server Error!");
     });
 }
 
