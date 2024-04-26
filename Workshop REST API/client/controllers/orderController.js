@@ -1,19 +1,23 @@
-import { BASE_SERVER_URL } from "../constants.js";
+import { BASE_SERVER_URL, urlEndpoints } from "../constants.js";
 import page from "../node_modules/page/page.mjs";
+import { getToken } from "../utils/authUtils.js";
 
 
 export function finishOrderHandler(event) {
+    // selecting all rows with products
     const tableRows = Array.from(event.currentTarget.parentElement.querySelectorAll("table tbody tr"));
     
+    // filtering only the selected ones
     const selectedRows = tableRows.filter(row => row.querySelector("input[type='checkbox']").checked);
 
     let orderProductsIds = [];
 
+    // iterating through the product IDs
     selectedRows.forEach(row => orderProductsIds.push(row.querySelector("#productId").textContent));
 
-    const token = localStorage.getItem("token"); // move to a function
+    const token = getToken();
 
-    fetch(`${BASE_SERVER_URL}/orders`, 
+    fetch(`${BASE_SERVER_URL}/${urlEndpoints.orders}`, 
     {method: "POST", 
     headers: {"Content-Type": "application/json", "X-Authorization": token},
     body: JSON.stringify({orderProductsIds})})
@@ -23,7 +27,7 @@ export function finishOrderHandler(event) {
             page.redirect("/");
             
         } else {
-            // not successful !
+            console.log(response); // notify the user
         }
     })
     .catch(err => console.error(err));
@@ -31,20 +35,22 @@ export function finishOrderHandler(event) {
 
 
 export function getOrdersHandler() {
-    const token = localStorage.getItem("token");
+    const token = getToken();
 
-    fetch(`${BASE_SERVER_URL}/orders`, {method: "GET", 
+    fetch(`${BASE_SERVER_URL}/${urlEndpoints.orders}`, {method: "GET", 
     headers: {"X-Authorization": token}})
     .then(response => response.json())
     .then(data => {
+        // showing all of the bought furniture
         const furnitureP = document.querySelector("#bought-furniture-p");
-        const totalPriceP = document.querySelector("#total-price-p");
-        
         furnitureP.querySelector("span").textContent = data.productNames;
-        totalPriceP.querySelector("span").textContent = `${data.totalPrice} $`;
-
         furnitureP.style.display = "block";
+
+        // showing the total price
+        const totalPriceP = document.querySelector("#total-price-p");
+        totalPriceP.querySelector("span").textContent = `${data.totalPrice} $`;
         totalPriceP.style.display = "block";
+
     })
     .catch(err => console.error(err));
 }

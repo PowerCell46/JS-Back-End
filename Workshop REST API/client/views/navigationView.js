@@ -6,9 +6,10 @@ export const navigationTemplate = (isAuthenticated) => html`
     <a href="/">Catalog</a>
     ${isAuthenticated ? html`
         <div id="user">
+            <a href="/create">Create</a>
             <a id="logoutBtn" @click=${logoutView} href="javascript:void(0)">Logout</a>
         </div>
-    ` : html`
+        ` : html`
         <div id="guest">
             <a href="/login" class="active">Login</a>
             <a href="/register" class="active">Register</a>
